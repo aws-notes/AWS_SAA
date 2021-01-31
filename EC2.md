@@ -157,3 +157,12 @@
 * Security Groups can reference other Security Groups instead of IP  ranges (very popular exam question) 
 * Know the difference between Private, Public and Elastic IP 
 * You can customize an EC2 instance at boot time using EC2 User Data 
+* Know the 4 EC2 launch modes: • On demand
+  * Reserved
+  * Spot instances
+  * Dedicated Hosts
+* Know the basic instance types: R,C,M,I,G,T2/T3
+* You can create AMIs to pre-install software on your EC2 => faster boot • AMI can be copied across regions and accounts
+* EC2 instances can be started in placement groups:
+  * Cluster
+  * Spread
