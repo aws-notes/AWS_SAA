@@ -99,4 +99,61 @@
 * To copy an AMI that was shared with you from another account, the owner of the source AMI must grant you read permissions for the storage that backs the AMI, either the associated EBS snapshot (for an Amazon EBS-backed AMI) or an associated S3 bucket (for an instance store-backed AMI).  
 * Limits:  
   * You can't copy an encrypted AMI that wasshared with you from another account. Instead,if the underlying snapshot and encryption key were shared with you, you can copy the snapshot while re-encrypting it with a key of your own. You own the copied snapshot, and can register it as a new AMI.
-  * You can't copy an AMI with an associated billingProduct code that was shared with you from another account.This includes Windows AMIs and AMIs from the AWS Marketplace. To copy a shared AMI with a billingProduct code, launch an EC2 instance in your account using the shared AMI and then create an AMI from the instance. 
+  * You can't copy an AMI with an associated billingProduct code that was shared with you from another account.This includes Windows AMIs and AMIs from the AWS Marketplace. To copy a shared AMI with a billingProduct code, launch an EC2 instance in your account using the shared AMI and then create an AMI from the instance.
+  
+## Placement Groups 
+**Cluster** - (Same AZ) clusters instances into a low-latency group in a single Availability Zone 
+  * Pros: Great network (10 Gbps bandwidth between instances) 
+  * Cons: If the rack fails, all instances fails at the same time 
+  * Use case: 
+    * Big Data job that needs to complete fast 
+    * Application that needs extremely low latency and high network throughput 
+**Spread** - (instance in each AZ) spreads instances across underlying hardware (max 7 instances per group per AZ) 
+  * Pros:
+    * Can span across Availability 
+    * Reduced risk is simultaneous failure 
+    * EC2 Instances are on different physical hardware
+  * Cons:
+    * Limited to 7 instances per AZ per placement group 
+  * Use case: 
+    * Application that needs to maximize high availability 
+    * Critical Applications where each instance must be isolated from failure from each other 
+**Partition** - (EC2 group in each AZ) spreads instances across many different partitions (which rely on different sets of racks) within an AZ. Scales to 100s of   * EC2 instances per group (Hadoop, Cassandra, Kafka) 
+* Up to 7 partitions per AZ 
+* Up to 100s of EC2 instances 
+* The instances in a partition do not share racks with the instances in the other partitions 
+* A partition failure can affect many EC2 but won’t affect other partitions 
+* EC2 instances get access to the partition information as metadata 
+* Use cases: HDFS, HBase, Cassandra, Kafka 
+
+## Elastic Network Interfaces (ENI) 
+* Logical component in a VPC that represents a virtual network card 
+* The ENI can have the following attributes
+    * Primary private IPv4, one or more secondary IPv4 
+    * One Elastic IP (IPv4) per private IPv4
+    * One Public IPv4
+    * One or more security groups
+    * A MAC address
+* Bound to a specific availability zone (AZ) 
+* Can be moved from instance 2 instance
+
+## EC2 Hibernate 
+* Saves memory to root EBS storage
+* Freezes state (like laptop)
+* The instance boot is much faster! (the OS is not stopped / restarted) 
+* Use cases: 
+    * long-running processing 
+    * saving the RAM state 
+* services that take time to initialize 
+* Root Volume: must be EBS encrypted 
+* Available for On-Demand and Reserved Instances 
+
+## For the exam
+* EC2 instances are billed by the second, t2.micro is free tier 
+* On Linux / Mac we use SSH, on Windows we use Putty 
+* SSH is on port 22, lock down the security group to your IP 
+* Timeout issues => Security groups issues 
+* Permission issues on the SSH key => run “chmod 0400” 
+* Security Groups can reference other Security Groups instead of IP  ranges (very popular exam question) 
+* Know the difference between Private, Public and Elastic IP 
+* You can customize an EC2 instance at boot time using EC2 User Data 
