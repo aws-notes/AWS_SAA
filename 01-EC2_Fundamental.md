@@ -60,8 +60,11 @@
       * **CapacityOptimized:** pool with the optimal capacity for the number of instances 
 
 * Types of instance
-  * **R:** RAM – in-memory caches   * **C:** CPU – compute / databases   * **M:** Medium / balanced – general / web app 
-  * **I:** I/O (instance storage / local storage) – databases   * **G:** GPU – video rendering / machine learning 
+  * **R:** RAM – in-memory caches   
+  * **C:** CPU – compute / databases   
+  * **M:** Medium / balanced – general / web app 
+  * **I:** I/O (instance storage / local storage) – databases   
+  * **G:** GPU – video rendering / machine learning 
   * **T2 / T3:** burstable instances (up to a capacity) 
   * **T2 / T3** - unlimited: unlimited burst 
 
