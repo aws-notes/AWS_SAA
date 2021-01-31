@@ -3,15 +3,11 @@
 ## Security Groups
 
 * Security groups are acting as a “firewall” on EC2 instances 
-
 * Default setting **block** all inbound **allow** all outbound
-
 * Can allow connections from IP, CIDR block, Other security groups
-
 * Elastic IP(EIP) - static public IP. - Limited to 5, billed for unused EIPS
 * Pubic IP - Public IP - Change when a instance reboots
 * Private IP - Private IP - Persistent even after reboot 
-
 * EC2 User Data - bash scripts only run once at the instance first start (sudo access)
 
 ## EC2 Instance LaunchTypes 
