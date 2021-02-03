@@ -9,15 +9,15 @@
 * Health checks
 
 ### AWS has 3 kinds of managed Load Balancers
-Classic Load Balancer 
-* HTTP, HTTPS, TCP
-Application Load Balancer 
-* HTTP, HTTPS, WebSocket
-Network Load Balancer 
-* TCP, TLS (secure TCP) & UDP
+* Classic Load Balancer 
+  * HTTP, HTTPS, TCP
+* Application Load Balancer 
+  * HTTP, HTTPS, WebSocket
+* Network Load Balancer 
+  * TCP, TLS (secure TCP) & UDP
 
 ### Good to Know
-LBs can scale but not instantaneously – contact AWS for a “warm-up”
+* LBs can scale but not instantaneously – contact AWS for a “warm-up”
 * Troubleshooting
   * 4xx errors are client induced errors
   * 5xx errors are application induced errors
@@ -28,8 +28,8 @@ LBs can scale but not instantaneously – contact AWS for a “warm-up”
   * CloudWatch Metrics will give you aggregate statistics (ex: connections count)
   
 ## Classic Load Balancers 
-Fixed hostname - "XXX.region.elb.amazonaws.com"
-TCP or HTTP health checks
+* Fixed hostname - "XXX.region.elb.amazonaws.com"
+* TCP or HTTP health checks
 
 ## Application Load Balancer
 * Application load balancers is Layer 7 (HTTP)
@@ -80,7 +80,6 @@ TCP or HTTP health checks
   * You pay charges ($) for inter AZ data if enabled
   
 ### SSL/TLS
-
 * You can manage certificates using ACM (AWS Certificate Manager)
 * You can create upload your own certificates alternatively
 * HTTPS listener:
@@ -89,7 +88,7 @@ TCP or HTTP health checks
   * Clients can use SNI (Server Name Indication) to specify the hostname they reach
   * Ability to specify a security policy to support older versions of SSL /TLS (legacy clients)
   
-*Server Name Indication (SNI)*
+* **Server Name Indication (SNI)**
 * SNI solves the problem of loading multiple SSL certificates onto one web server (to serve multiple websites)
 * Requires the client to indicate the hostname of the target server in the initial SSL handshake
 * The server will then find the correct certificate, or return the default one
@@ -140,7 +139,6 @@ TCP or HTTP health checks
   * ASG are free.You pay for the underlying resources being launched
   * Having instances under an ASG means that if they get terminated for whatever reason, the ASG will automatically create new ones as a replacement. Extra safety!
   * ASG can terminate instances marked as unhealthy by an LB (and hence replace them)
-  
 * **Auto Scaling Groups – Scaling Policies**
 * Target Tracking Scaling
   * Most simple and easy to set-up
@@ -151,23 +149,19 @@ TCP or HTTP health checks
 * Scheduled Actions
   * Anticipate a scaling based on known usage patterns
   * Example: increase the min capacity to 10 at 5 pm on Fridays
-  
 * **Auto Scaling Groups - Scaling Cooldowns**
 * Cool down period is a buffer to stop erratic scalling
 * We can create cooldowns that apply to a specific *simple scaling* policy
 * Overrides the default cooldown period
-
 * **ASG Default Termination Policy**
 * ASG tries the balance the number of instances across AZ by default
 * The az with the most instances will have one removed wheh scaling in
 * The instance with the oldest launch configuration will be deleated
-
 * **ASG - Lifecycle Hooks**
 * By default as soon as an instance is launched in an ASG it’s in service
 * You have the ability to perform extra steps before the instance goes in service (Pending state)
 * Scan it for vulns, install agents - whatever
 * You can do the same for terminated
-
 * **LaunchTemplate vs Launch Configuration**
 *  Both:
   * ID of the Amazon Machine Image (AMI), the instance type, a key pair, security groups,and the other parameters that you use to launch EC2 instances (tags, EC2 user-data...) 
