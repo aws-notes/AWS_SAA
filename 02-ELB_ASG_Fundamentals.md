@@ -140,36 +140,36 @@
   * Having instances under an ASG means that if they get terminated for whatever reason, the ASG will automatically create new ones as a replacement. Extra safety!
   * ASG can terminate instances marked as unhealthy by an LB (and hence replace them)
 * **Auto Scaling Groups – Scaling Policies**
-* Target Tracking Scaling
-  * Most simple and easy to set-up
-  * Example: I want the average ASG CPU to stay at around 40%
-* Simple / Step Scaling
-  * When a CloudWatch alarm is triggered (example CPU > 70%), then add 2 units
-  * When a CloudWatch alarm is triggered (example CPU < 30%), then remove 1
-* Scheduled Actions
-  * Anticipate a scaling based on known usage patterns
-  * Example: increase the min capacity to 10 at 5 pm on Fridays
+  * Target Tracking Scaling
+    * Most simple and easy to set-up
+    * Example: I want the average ASG CPU to stay at around 40%
+  * Simple / Step Scaling
+    * When a CloudWatch alarm is triggered (example CPU > 70%), then add 2 units
+    * When a CloudWatch alarm is triggered (example CPU < 30%), then remove 1
+  * Scheduled Actions
+    * Anticipate a scaling based on known usage patterns
+    * Example: increase the min capacity to 10 at 5 pm on Fridays
 * **Auto Scaling Groups - Scaling Cooldowns**
-* Cool down period is a buffer to stop erratic scalling
-* We can create cooldowns that apply to a specific *simple scaling* policy
-* Overrides the default cooldown period
+  * Cool down period is a buffer to stop erratic scalling
+  * We can create cooldowns that apply to a specific *simple scaling* policy
+  * Overrides the default cooldown period
 * **ASG Default Termination Policy**
-* ASG tries the balance the number of instances across AZ by default
-* The az with the most instances will have one removed wheh scaling in
-* The instance with the oldest launch configuration will be deleated
+  * ASG tries the balance the number of instances across AZ by default
+  * The az with the most instances will have one removed wheh scaling in
+  * The instance with the oldest launch configuration will be deleated
 * **ASG - Lifecycle Hooks**
-* By default as soon as an instance is launched in an ASG it’s in service
-* You have the ability to perform extra steps before the instance goes in service (Pending state)
-* Scan it for vulns, install agents - whatever
-* You can do the same for terminated
+  * By default as soon as an instance is launched in an ASG it’s in service
+  * You have the ability to perform extra steps before the instance goes in service (Pending state)
+  * Scan it for vulns, install agents - whatever
+  * You can do the same for terminated
 * **LaunchTemplate vs Launch Configuration**
-*  Both:
-  * ID of the Amazon Machine Image (AMI), the instance type, a key pair, security groups,and the other parameters that you use to launch EC2 instances (tags, EC2 user-data...) 
-* Launch Configuration (legacy):
-  * Must be re-created every time • 
-* LaunchTemplate (newer):
-  * Can have multiple versions
-  * Create parameters subsets (partial configuration for re-use and inheritance)
-  * Provision using both On-Demand and Spot instances (or a mix)
-  * Can use T2 unlimited burst feature
-  * Recommended by AWS going forward
+  *  Both:
+    * ID of the Amazon Machine Image (AMI), the instance type, a key pair, security groups,and the other parameters that you use to launch EC2 instances (tags, EC2 user-data...) 
+  * Launch Configuration (legacy):
+    * Must be re-created every time • 
+  * LaunchTemplate (newer):
+    * Can have multiple versions
+    * Create parameters subsets (partial configuration for re-use and inheritance)
+    * Provision using both On-Demand and Spot instances (or a mix)
+    * Can use T2 unlimited burst feature
+    * Recommended by AWS going forward
