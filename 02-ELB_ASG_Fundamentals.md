@@ -9,11 +9,11 @@
 * Health checks
 
 ### AWS has 3 kinds of managed Load Balancers
-* **Classic Load Balancer **
+* **Classic Load Balancer**
   * HTTP, HTTPS, TCP
-* **Application Load Balancer **
+* **Application Load Balancer**
   * HTTP, HTTPS, WebSocket
-* **Network Load Balancer **
+* **Network Load Balancer**
   * TCP, TLS (secure TCP) & UDP
 
 ### Good to Know
