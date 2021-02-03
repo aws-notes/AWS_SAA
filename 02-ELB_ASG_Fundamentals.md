@@ -49,7 +49,6 @@ TCP or HTTP health checks
 * ECS tasks (containers)
 * Lambda functions
 * IP Addresses (internal IPs only)
-
 * ALB can route to multiple target groups (1:n)
 * Health checks are at the target group level
 * The clients true IP from (*X-Forwarded-For*) header
@@ -97,12 +96,12 @@ TCP or HTTP health checks
 * *Only* works for ALB & NLB
 * Does not work for CLB 
 
-* *Classic Load Balancer (v1)*
+* **Classic Load Balancer (v1)**
   * Support only one SSL certificate
   * Must use multiple CLB for multiple hostname with multiple SSL certificates
-* *Application Load Balancer (v2)*
+* **Application Load Balancer (v2)**
   * Supports multiple listeners with multiple SSL certificates • Uses Server Name Indication (SNI) to make it work
-* *Network Load Balancer (v2)*
+* **Network Load Balancer (v2)**
   * Supports multiple listeners with multiple SSL certificates
   * Uses Server Name Indication (SNI) to make it work
 
@@ -116,24 +115,24 @@ TCP or HTTP health checks
 * Set to a low value if your requests are short
 
 ## Auto Scaling Group (ASG)
-* *Auto Scaling Alarms*
+* **Auto Scaling Alarms**
   * An Alarm monitors a metric (such as Average CPU)
   * Metrics are computed for the overall ASG instances
   * Based on the alarm:
     * We can create scale-out policies (increase the number of instances)
     * We can create scale-in policies (decrease the number of instances)
-* *Auto Scaling New Rules*
+* **Auto Scaling New Rules**
   * ”Better” auto scaling rules that are directly managed by EC2
     * Target Average CPU Usage
     * Number of requests on the ELB per instance
     * Average Network In
     * Average Network Out
-* *Auto Scaling Custom Metric*
+* **Auto Scaling Custom Metric**
   * Based on a custom metric (ex: number of connected users)
     * Send custom metric from application on EC2 to CloudWatch (PutMetric API)
     * Create CloudWatch alarm to react to low / high values
     * Use the CloudWatch alarm as the scaling policy for ASG
-* *ASG Notes*
+* **ASG Notes**
   * Scaling policies can be on CPU, Network... and can even be on custom metrics or based on a schedule (if you know your visitors patterns)
   * ASGs use Launch configurations or Launch Templates (newer)
   * To update an ASG, you must provide a new launch configuration / launch template
@@ -142,7 +141,7 @@ TCP or HTTP health checks
   * Having instances under an ASG means that if they get terminated for whatever reason, the ASG will automatically create new ones as a replacement. Extra safety!
   * ASG can terminate instances marked as unhealthy by an LB (and hence replace them)
   
-* *Auto Scaling Groups – Scaling Policies*
+* **Auto Scaling Groups – Scaling Policies**
 * Target Tracking Scaling
   * Most simple and easy to set-up
   * Example: I want the average ASG CPU to stay at around 40%
@@ -153,23 +152,23 @@ TCP or HTTP health checks
   * Anticipate a scaling based on known usage patterns
   * Example: increase the min capacity to 10 at 5 pm on Fridays
   
-* *Auto Scaling Groups - Scaling Cooldowns*
+* **Auto Scaling Groups - Scaling Cooldowns**
 * Cool down period is a buffer to stop erratic scalling
 * We can create cooldowns that apply to a specific *simple scaling* policy
 * Overrides the default cooldown period
 
-* *ASG Default Termination Policy*
+* **ASG Default Termination Policy**
 * ASG tries the balance the number of instances across AZ by default
 * The az with the most instances will have one removed wheh scaling in
 * The instance with the oldest launch configuration will be deleated
 
-* *ASG - Lifecycle Hooks*
+* **ASG - Lifecycle Hooks**
 * By default as soon as an instance is launched in an ASG it’s in service
 * You have the ability to perform extra steps before the instance goes in service (Pending state)
 * Scan it for vulns, install agents - whatever
 * You can do the same for terminated
 
-* *LaunchTemplate vs Launch Configuration*
+* **LaunchTemplate vs Launch Configuration**
 *  Both:
   * ID of the Amazon Machine Image (AMI), the instance type, a key pair, security groups,and the other parameters that you use to launch EC2 instances (tags, EC2 user-data...) 
 * Launch Configuration (legacy):
