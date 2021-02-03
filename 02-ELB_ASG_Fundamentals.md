@@ -61,15 +61,13 @@
 * Less latency ~100 ms (vs 400 ms for ALB)
 * NLB has one **Static IP** per AZ, and supports assigning Elastic IP (helpful for whitelisting specific IP)
 * NLB are used for extreme performance,TCP or UDP traffic
-
-*Load Balancer Stickiness*
+**Load Balancer Stickiness**
 * Sends a cookie that fixs a session to a prticulae target group (ec2, ip, lambda, ecs)
 * Enabling stickiness may bring imbalance to the load over the backend EC2 instances
 
 ### Cross-Zone Load Balancing
 * Each load balancer instance distributes evenly across all registered instances in all AZ
 * Otherwise, each load balancer node distributes requests evenly across the registered instances in its Availability Zone only.
-
 * **Classic Load Balancer**
   * Disabled by default
   * No charges for inter AZ data if enabled
@@ -88,14 +86,12 @@
   * You can add an optional list of certs to support multiple domains
   * Clients can use SNI (Server Name Indication) to specify the hostname they reach
   * Ability to specify a security policy to support older versions of SSL /TLS (legacy clients)
-  
 * **Server Name Indication (SNI)**
-* SNI solves the problem of loading multiple SSL certificates onto one web server (to serve multiple websites)
-* Requires the client to indicate the hostname of the target server in the initial SSL handshake
-* The server will then find the correct certificate, or return the default one
+  * SNI solves the problem of loading multiple SSL certificates onto one web server (to serve multiple websites)
+  * Requires the client to indicate the hostname of the target server in the initial SSL handshake
+  * The server will then find the correct certificate, or return the default one
 * **Only** works for ALB & NLB
 * Does not work for CLB 
-
 * **Classic Load Balancer (v1)**
   * Support only one SSL certificate
   * Must use multiple CLB for multiple hostname with multiple SSL certificates
