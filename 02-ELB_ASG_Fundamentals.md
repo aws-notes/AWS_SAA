@@ -9,11 +9,11 @@
 * Health checks
 
 ### AWS has 3 kinds of managed Load Balancers
-* Classic Load Balancer 
+* **Classic Load Balancer **
   * HTTP, HTTPS, TCP
-* Application Load Balancer 
+* **Application Load Balancer **
   * HTTP, HTTPS, WebSocket
-* Network Load Balancer 
+* **Network Load Balancer **
   * TCP, TLS (secure TCP) & UDP
 
 ### Good to Know
@@ -35,13 +35,13 @@
 * Application load balancers is Layer 7 (HTTP)
 * Load balancing to multiple HTTP applications across machines (target groups)
 * Load balancing to multiple applications on the same machine (ex: containers)
-* *Dynamic IP* behind DNS
+* **Dynamic IP** behind DNS
 * Support for HTTP/2 and WebSocket
 * Support redirects (from HTTP to HTTPS for example)
 * Routing tables to different target groups:
-  * Routing based on *path* in URL (example.com/users & example.com/posts)
-  * Routing based on *hostname* in URL (one.example.com & other.example.com)
-  * Routing based on *Query String*, Headers (example.com/users?id=123&order=false)
+  * Routing based on **path** in URL (example.com/users & example.com/posts)
+  * Routing based on **hostname** in URL (one.example.com & other.example.com)
+  * Routing based on **Query String**, Headers (example.com/users?id=123&order=false)
 * Has a port mapping feature to redirect to a dynamic port in ECS(would need multiple CLBs for that)
 
 ### ALB - Target Groups
@@ -51,15 +51,15 @@
 * IP Addresses (internal IPs only)
 * ALB can route to multiple target groups (1:n)
 * Health checks are at the target group level
-* The clients true IP from (*X-Forwarded-For*) header
-* The clients true Port from (*X-Forwarded-Port*) header
-* The clients true protocal from (*X-Forwarded-Proto*) header
+* The clients true IP from (**X-Forwarded-For**) header
+* The clients true Port from (**X-Forwarded-Port**) header
+* The clients true protocal from (**X-Forwarded-Proto**) header
 
 ## Network Load Balancer
 * Layer 4 - Forward TCP & UDP traffic
 * High performance - Handle millions of request per seconds
 * Less latency ~100 ms (vs 400 ms for ALB)
-* NLB has one *Static IP* per AZ, and supports assigning Elastic IP (helpful for whitelisting specific IP)
+* NLB has one **Static IP** per AZ, and supports assigning Elastic IP (helpful for whitelisting specific IP)
 * NLB are used for extreme performance,TCP or UDP traffic
 
 *Load Balancer Stickiness*
@@ -70,12 +70,13 @@
 * Each load balancer instance distributes evenly across all registered instances in all AZ
 * Otherwise, each load balancer node distributes requests evenly across the registered instances in its Availability Zone only.
 
-* Classic Load Balancer
+* **Classic Load Balancer**
   * Disabled by default
   * No charges for inter AZ data if enabled
-* Application Load Balancer
-  * Always on (can’t be disabled) • No charges for inter AZ data
-* Network Load Balancer
+* **Application Load Balancer**
+  * Always on (can’t be disabled)
+  * No charges for inter AZ data
+* **Network Load Balancer**
   * Disabled by default
   * You pay charges ($) for inter AZ data if enabled
   
@@ -92,14 +93,15 @@
 * SNI solves the problem of loading multiple SSL certificates onto one web server (to serve multiple websites)
 * Requires the client to indicate the hostname of the target server in the initial SSL handshake
 * The server will then find the correct certificate, or return the default one
-* *Only* works for ALB & NLB
+* **Only** works for ALB & NLB
 * Does not work for CLB 
 
 * **Classic Load Balancer (v1)**
   * Support only one SSL certificate
   * Must use multiple CLB for multiple hostname with multiple SSL certificates
 * **Application Load Balancer (v2)**
-  * Supports multiple listeners with multiple SSL certificates • Uses Server Name Indication (SNI) to make it work
+  * Supports multiple listeners with multiple SSL certificates 
+  * Uses Server Name Indication (SNI) to make it work
 * **Network Load Balancer (v2)**
   * Supports multiple listeners with multiple SSL certificates
   * Uses Server Name Indication (SNI) to make it work
