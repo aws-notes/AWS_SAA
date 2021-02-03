@@ -161,11 +161,11 @@
   * Scan it for vulns, install agents - whatever
   * You can do the same for terminated
 * **LaunchTemplate vs Launch Configuration**
-  * Both:
+  * **Both:**
     * ID of the Amazon Machine Image (AMI), the instance type, a key pair, security groups,and the other parameters that you use to launch EC2 instances (tags, EC2 user-data...) 
-  * Launch Configuration (legacy):
+  * **Launch Configuration (legacy):**
     * Must be re-created every time • 
-  * LaunchTemplate (newer):
+  * **LaunchTemplate (newer):**
     * Can have multiple versions
     * Create parameters subsets (partial configuration for re-use and inheritance)
     * Provision using both On-Demand and Spot instances (or a mix)
