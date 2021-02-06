@@ -108,13 +108,13 @@
 * Instead, they come with “Instance Store” (= ephemeral storage)
 * Instance store is physically attached to the machine (EBS is a network drive)
 * Pros:
- * Better I/O performance (EBS gp2 has an max IOPS of 16000, io1 of 64000)
- * Good for buffer / cache / scratch data / temporary content 
- * Data survives reboots
+  * Better I/O performance (EBS gp2 has an max IOPS of 16000, io1 of 64000)
+  * Good for buffer / cache / scratch data / temporary content 
+  * Data survives reboots
 * Cons:
- * On stop or termination, the instance store is lost
- * You can’t resize the instance store
- * Backups must be operated by the user
+  * On stop or termination, the instance store is lost
+  * You can’t resize the instance store
+  * Backups must be operated by the user
 
 ### Local EC2 Instance Store
 * Physical disk attached to the physical server
@@ -130,25 +130,25 @@
 * Mirror your EBS volumes - mount volumes in parallel in RAID settings
 * RAID is possible as long as your OS supports it
 * Some RAID options are: 
- * RAID 0 (strips disks - no redundancy)
- * RAID 1 (redundent)
+  * RAID 0 (strips disks - no redundancy)
+  * RAID 1 (redundent)
  
 ### RAID 0 (Increase IOPS Performance)
 * **Not Redundent** - if a disk fails you will lose data
 * Combines 2 or more volumes 
- * 2 x 500 GiB volumes with 4,000 provisioned IOPS each
- * Creates 1000 GiB RAID 0 array with an available bandwidth of 8,000 IOPS and 1,000 MB/s of throughput
+  * 2 x 500 GiB volumes with 4,000 provisioned IOPS each
+  * Creates 1000 GiB RAID 0 array with an available bandwidth of 8,000 IOPS and 1,000 MB/s of throughput
 * Use cases:
- * An application that needs a lot of IOPS and doesn’t need fault-tolerance
- * A database that has replication already built-in
+  * An application that needs a lot of IOPS and doesn’t need fault-tolerance
+  * A database that has replication already built-in
 
 ### RAID 1 (Increase Fault Tolerance)
 * RAID 1 = disk mirroring
 * If 1 disk fails the other has a copy of the data
 * We have to send the data to two EBS volume at the same time (2x network)
 * Utalises 2 or more volumes 
- * 2 x 500 GiB volumes with 4,000 provisioned IOPS each 
- * Creates 1500 GiB RAID 1 array with an available bandwidth of 4,000 IOPS and 500 MB/s of throughput
+  * 2 x 500 GiB volumes with 4,000 provisioned IOPS each 
+  * Creates 1500 GiB RAID 1 array with an available bandwidth of 4,000 IOPS and 500 MB/s of throughput
 * Use cases:
- * Application that need increase volume fault tolerance
- * Application where you need to service disks
+  * Application that need increase volume fault tolerance
+  * Application where you need to service disks
