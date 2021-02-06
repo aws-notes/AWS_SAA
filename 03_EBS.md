@@ -12,7 +12,7 @@
  
  ### EBS Volume Types
 1. **GP2*** (SSD): General purpose SSD volume that balances price and performance for a wide variety of workloads
-2. **IO1** (SSD): Highest-performance SSD volume for mission-critical low-latency or high - throughput workloads
+2. **IO1*** (SSD): Highest-performance SSD volume for mission-critical low-latency or high - throughput workloads
 3. **IST1** (HDD): Low cost HDD volume designed for frequently accessed, throughput - intensive workloads
 4. **ISC1** (HDD): Lowest cost HDD volume designed for less frequently accessed workloads
 
