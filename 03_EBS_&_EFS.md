@@ -152,3 +152,44 @@
 * Use cases:
   * Application that need increase volume fault tolerance
   * Application where you need to service disks
+  
+## EFS – Elastic File System
+* Can be mounted on many EC2
+* Multi-AZ
+* Highly available
+* Expensive (3xEBS-GP2)
+* Uses NFSv4.1 protocol to transport data
+* POSIX file system - Linux only
+* Uses security group to control access
+* Pay-per-use, not pay for capacity like EBS
+
+### EFS – Performance & Storage Classes
+* EFS Scale
+  * 1000s of concurrent NFS clients, 10 GB+ /s throughput
+  * Grow to Petabyte-scale network file system, automatically
+* Performance mode (set at EFS creation time)
+  * General purpose (default): latency-sensitive use cases (web server, CMS, etc...) 
+  * Max I/O – higher latency, throughput, highly parallel (big data, media processing)
+* StorageTiers (lifecycle management feature – move file after N days)
+  * Standard: for frequently accessed files
+  * Infrequent access (EFS-IA): cost to retrieve files, lower price to store
+  
+### EBS vs EFS – Elastic Block Storage
+* EBS volumes...
+  * can be attached to only one instance at a time
+  * are locked at the Availability Zone (AZ) level 
+  * gp2: IO increases if the disk size increases
+  * io1: can increase IO independently
+* To migrate an EBS volume across AZ
+  * Take a snapshot
+  * Restore the snapshot to another AZ
+  * EBS backups use IO and you shouldn’t run them while your application is handling a lot of traffic
+* Root EBS Volumes of instances get terminated by default if the EC2 instance gets terminated. (you can disable that)
+
+### EBS vs EFS – Elastic File System
+* Mounting 100s of instances across AZ 
+* EFS share website files (WordPress)
+* Only for Linux Instances (POSIX)
+* EFS has a higher price point than EBS 
+* Can leverage EFS-IA for cost savings
+* Remember : EFS vs EBS vs Instance Store
