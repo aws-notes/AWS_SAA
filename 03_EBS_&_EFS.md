@@ -1,4 +1,4 @@
-# EBS
+# EBS & EFS
 
 ## EBS - Elastic Block Storage
 
