@@ -1,7 +1,7 @@
 
 # ELB_ASG_Fundamentals
 
-1. [ELB](https://github.com/aws-notes/AWS_SAA/blob/main/04_RDS_Aurora_&_ElastiCache.md#rds)
+1. [ELB](https://github.com/aws-notes/AWS_SAA/blob/main/02-ELB_ASG_Fundamentals.md#elb---elastic-load-balancer)
 2. [ASG](https://github.com/aws-notes/AWS_SAA/blob/main/04_RDS_Aurora_&_ElastiCache.md#aurora)
 
 # ELB - Elastic Load Balancer
