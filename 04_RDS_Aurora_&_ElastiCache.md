@@ -1,7 +1,7 @@
 # RDS, Aurora & ElastiCache
 
 1. [RDS](https://github.com/aws-notes/AWS_SAA/blob/main/04_RDS_Aurora_&_ElastiCache.md#rds)
-2. [Aurora](another-page.md)
+2. [Aurora](https://github.com/aws-notes/AWS_SAA/blob/main/04_RDS_Aurora_&_ElastiCache.md#aurora)
 
 ## RDS
 
