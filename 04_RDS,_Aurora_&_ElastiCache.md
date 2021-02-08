@@ -1,6 +1,7 @@
 # RDS, Aurora & ElastiCache
 
-1. [a relative link](another-page.md)
+1. [RDS](another-page.md)
+2. [Aurora](another-page.md)
 
 ## RDS
 
