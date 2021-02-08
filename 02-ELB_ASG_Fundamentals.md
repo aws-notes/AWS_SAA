@@ -4,6 +4,8 @@
 1. [ELB](https://github.com/aws-notes/AWS_SAA/blob/main/04_RDS_Aurora_&_ElastiCache.md#rds)
 2. [ASG](https://github.com/aws-notes/AWS_SAA/blob/main/04_RDS_Aurora_&_ElastiCache.md#aurora)
 
+# ELB - Elastic Load Balancer
+
 ## Why use an EC2 Load Balancer?
 * An ELB (EC2 Load Balancer) is a managed load balancer
 * AWS guarantees that it will be working
@@ -114,7 +116,7 @@
 * Can be disabled (set value to 0)
 * Set to a low value if your requests are short
 
-## Auto Scaling Group (ASG)
+# Auto Scaling Group (ASG)
 * **Auto Scaling Alarms**
   * An Alarm monitors a metric (such as Average CPU)
   * Metrics are computed for the overall ASG instances
