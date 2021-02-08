@@ -1,6 +1,9 @@
 
 # ELB_ASG_Fundamentals
 
+1. [ELB](https://github.com/aws-notes/AWS_SAA/blob/main/04_RDS_Aurora_&_ElastiCache.md#rds)
+2. [ASG](https://github.com/aws-notes/AWS_SAA/blob/main/04_RDS_Aurora_&_ElastiCache.md#aurora)
+
 ## Why use an EC2 Load Balancer?
 * An ELB (EC2 Load Balancer) is a managed load balancer
 * AWS guarantees that it will be working
